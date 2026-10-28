@@ -9,132 +9,135 @@
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --navy:#12284c; --navy2:#1d3a6b; --ink:#16233a; --muted:#5b6b85;
-  --bg:#eef2f8; --panel:#ffffff; --line:#d5deec; --accent:#0f8a7e; --accent-bg:#e3f4f1;
+  --navy:#0e2147; --navy2:#1b3a7a; --ink:#101c36; --muted:#55657f;
+  --teal:#13a89a; --sky:#3b82f6; --bg:#e9eff8;
 }
 *{box-sizing:border-box}
-html,body{margin:0}
-body{font-family:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
-header{background:var(--navy);color:#fff;padding:36px 20px 64px}
-.wrap{max-width:860px;margin:0 auto}
-header h1{margin:0;font-size:clamp(26px,5vw,38px);font-weight:800;letter-spacing:-.01em}
-header p{margin:6px 0 0;color:#b9c7e2;font-weight:500}
-.search{margin-top:22px}
-.search input{width:100%;padding:14px 16px;border-radius:10px;border:0;font:inherit;font-weight:500;background:#fff;color:var(--ink)}
-.search input:focus{outline:3px solid #7fd3c9}
-main{max-width:860px;margin:-34px auto 40px;padding:0 20px}
-section{background:var(--panel);border:1px solid var(--line);border-radius:14px;margin-bottom:18px;overflow:hidden}
-section h2{margin:0;padding:14px 20px;font-size:15px;font-weight:800;color:var(--navy2);background:#f6f9fd;border-bottom:1px solid var(--line)}
-.tool{display:flex;align-items:center;gap:16px;padding:16px 20px;border-bottom:1px solid var(--line);text-decoration:none;color:inherit}
-.tool:last-child{border-bottom:0}
-.tool:hover{background:var(--accent-bg)}
-.tool:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
-.ico{flex:none;width:44px;height:44px;border-radius:11px;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:22px}
-.txt{flex:1;min-width:0}
-.txt b{display:block;font-size:17px;font-weight:800}
-.txt span{display:block;color:var(--muted);font-size:14px;font-weight:500}
-.go{flex:none;font-weight:800;font-size:14px;color:var(--accent);border:2px solid var(--accent);border-radius:8px;padding:6px 14px}
-.tool:hover .go{background:var(--accent);color:#fff}
-.empty{display:none;text-align:center;color:var(--muted);padding:30px;font-weight:700}
-footer{max-width:860px;margin:0 auto;padding:0 20px 40px;color:var(--muted);font-size:13px;font-weight:700;text-align:center}
-.add{padding:16px 20px;display:flex;gap:8px;flex-wrap:wrap;border-top:1px solid var(--line)}
-.add input{flex:1 1 150px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font:inherit;font-weight:500}
-.add button{padding:10px 18px;border:0;border-radius:8px;background:var(--navy);color:#fff;font:inherit;font-weight:800;cursor:pointer}
-.rm{flex:none;border:0;background:none;color:#a33;font-size:20px;cursor:pointer;padding:4px 8px}
-@media(max-width:520px){.go{display:none}.tool{padding:14px 16px}}
+html,body{margin:0;min-height:100%}
+body{
+  font-family:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  color:var(--ink); line-height:1.5;
+  background:
+    radial-gradient(900px 500px at 85% -10%, rgba(59,130,246,.35), transparent 60%),
+    radial-gradient(700px 480px at 0% 0%, rgba(19,168,154,.28), transparent 60%),
+    linear-gradient(180deg,#0b1a3a 0,#10285a 420px,var(--bg) 420px);
+  background-repeat:no-repeat;
+}
+.page{max-width:1140px;margin:0 auto;padding:56px 22px 48px}
+.brand{color:#fff;text-align:center;padding-bottom:42px}
+.brand .mark{
+  display:inline-grid;place-items:center;width:64px;height:64px;border-radius:18px;
+  background:linear-gradient(135deg,#1fc7b6,#3b82f6);
+  box-shadow:0 10px 30px rgba(19,168,154,.45), inset 0 1px 0 rgba(255,255,255,.4);
+  font-weight:800;font-size:22px;letter-spacing:.02em;margin-bottom:18px;
+}
+.brand h1{margin:0;font-size:clamp(30px,6vw,46px);font-weight:800;letter-spacing:-.02em}
+.brand p{margin:8px 0 0;color:#b7c8ea;font-weight:700;font-size:17px}
+
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.card{
+  display:flex;flex-direction:row;text-decoration:none;color:inherit;background:#fff;
+  border-radius:24px;overflow:hidden;
+  box-shadow:0 2px 4px rgba(14,33,71,.06),0 24px 48px -12px rgba(14,33,71,.35);
+  transition:transform .25s ease, box-shadow .25s ease;
+}
+.card:hover,.card:focus-visible{transform:translateY(-5px);box-shadow:0 2px 4px rgba(14,33,71,.06),0 36px 64px -14px rgba(14,33,71,.5)}
+.card:focus-visible{outline:4px solid var(--teal);outline-offset:3px}
+.art{flex:0 0 40%;min-height:250px;display:grid;place-items:center;position:relative;overflow:hidden}
+.art.a1{background:linear-gradient(135deg,#0d2a63 0%,#1b56c4 55%,#17b5a6 120%)}
+.art.a2{background:linear-gradient(135deg,#14224a 0%,#34358f 55%,#2f7be0 120%)}
+.art::after{content:"";position:absolute;inset:0;background:radial-gradient(300px 160px at 80% 0%,rgba(255,255,255,.22),transparent 70%)}
+.art svg{width:88%;max-width:240px;height:auto;position:relative;z-index:1;filter:drop-shadow(0 12px 18px rgba(0,0,0,.28))}
+.body{padding:28px 26px;display:flex;flex-direction:column;justify-content:center;flex:1}
+.body h2{margin:0 0 10px;font-size:23px;font-weight:800;letter-spacing:-.01em}
+.body p{margin:0 0 22px;color:var(--muted);font-weight:500;font-size:15px}
+.open{
+  margin-top:4px;align-self:flex-start;display:inline-flex;align-items:center;gap:10px;
+  background:var(--navy);color:#fff;font-weight:800;font-size:15px;padding:12px 22px;border-radius:999px;
+  transition:background .2s ease, gap .2s ease;
+}
+.open svg{width:18px;height:18px}
+.card:hover .open{background:linear-gradient(90deg,#13a89a,#2f7be0);gap:16px}
+footer{text-align:center;margin-top:46px;color:var(--navy2);font-weight:800;font-size:15px}
+footer span{display:block;color:var(--muted);font-weight:700;font-size:13px;margin-top:2px}
+@media(max-width:860px){
+  .grid{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .page{padding-top:40px}
+  .card{flex-direction:column}
+  .art{flex:none;min-height:0;height:190px}
+  .body{padding:24px 24px 26px}
+  .body h2{font-size:24px}
+}
+@media(prefers-reduced-motion:reduce){.card,.open{transition:none}.card:hover{transform:none}}
 </style>
 </head>
 <body>
-<header>
-  <div class="wrap">
-    <h1>VED Investment Tools</h1>
+<div class="page">
+  <div class="brand">
+    <div class="mark">VED</div>
+    <h1>VED Investment</h1>
     <p>Sahi Guidance, Sahi Balance</p>
-    <div class="search"><input id="q" type="search" placeholder="Search a tool…" aria-label="Search tools" autocomplete="off"></div>
   </div>
-</header>
 
-<main id="main"></main>
-<footer>VED Investment • Mutual Fund Distribution</footer>
+  <div class="grid" id="grid"></div>
+
+  <footer>VED Investment • Mutual Fund Distribution</footer>
+</div>
 
 <script>
-/* ===== EDIT HERE: change any url to where the tool really lives ===== */
-const GROUPS = [
-  { name: "My tools", tools: [
-    { icon:"📊", name:"MF Research Tool", desc:"NAV, SIP calculator, compare, holdings, TER, client report generator", url:"https://storage4myfile-max.github.io/mf-research-tool/" },
-    { icon:"🔒", name:"CAS Redaction Engine", desc:"Remove personal details from CAS statements, single or batch", url:"https://storage4myfile-max.github.io/cas-Redactor/" }
-  ]}
-];
-/* ==================================================================== */
-
-const KEY = "ved_hub_custom_links";
-function loadCustom(){ try{ return JSON.parse(localStorage.getItem(KEY)||"[]"); }catch(e){ return []; } }
-function saveCustom(a){ try{ localStorage.setItem(KEY, JSON.stringify(a)); }catch(e){} }
-
-const main = document.getElementById("main");
-const q = document.getElementById("q");
-
-function el(tag, cls, html){ const e=document.createElement(tag); if(cls) e.className=cls; if(html!==undefined) e.innerHTML=html; return e; }
-function esc(s){ return String(s).replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
-
-function toolRow(t, idx){
-  const a = el("a","tool");
-  a.href = t.url; a.target = "_blank"; a.rel = "noopener";
-  a.dataset.search = (t.name+" "+t.desc).toLowerCase();
-  a.innerHTML = `<div class="ico">${t.icon||"🔗"}</div><div class="txt"><b>${esc(t.name)}</b><span>${esc(t.desc||"")}</span></div><div class="go">Open</div>`;
-  if(idx!==undefined){
-    const rm = el("button","rm","×"); rm.title="Remove"; rm.setAttribute("aria-label","Remove "+t.name);
-    rm.onclick = ev=>{ ev.preventDefault(); ev.stopPropagation(); const c=loadCustom(); c.splice(idx,1); saveCustom(c); render(); };
-    a.appendChild(rm);
+/* ===== EDIT HERE to change a link or add a tool ===== */
+const TOOLS = [
+  {
+    name: "MF Research Tool",
+    desc: "NAV, SIP calculator, fund comparison, holdings, TER and client reports.",
+    url: "https://storage4myfile-max.github.io/mf-research-tool/",
+    art: "a1",
+    svg: `<svg viewBox="0 0 300 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="10" y="10" width="280" height="160" rx="18" fill="#fff" fill-opacity=".14" stroke="#fff" stroke-opacity=".45" stroke-width="2"/>
+      <rect x="40" y="104" width="30" height="46" rx="7" fill="#fff" fill-opacity=".55"/>
+      <rect x="84" y="86" width="30" height="64" rx="7" fill="#fff" fill-opacity=".7"/>
+      <rect x="128" y="94" width="30" height="56" rx="7" fill="#fff" fill-opacity=".6"/>
+      <rect x="172" y="64" width="30" height="86" rx="7" fill="#fff" fill-opacity=".85"/>
+      <rect x="216" y="40" width="30" height="110" rx="7" fill="#fff"/>
+      <path d="M44 88 L100 66 L143 74 L187 46 L231 24" stroke="#5eead4" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="231" cy="24" r="9" fill="#5eead4" stroke="#fff" stroke-width="3"/>
+    </svg>`
+  },
+  {
+    name: "CAS Redaction Engine",
+    desc: "Hide personal details in CAS statements before sharing. Single or batch.",
+    url: "https://storage4myfile-max.github.io/cas-Redactor/",
+    art: "a2",
+    svg: `<svg viewBox="0 0 300 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="78" y="8" width="144" height="168" rx="14" fill="#fff"/>
+      <rect x="98" y="28" width="60" height="9" rx="4.5" fill="#c7d2e8"/>
+      <rect x="98" y="50" width="104" height="9" rx="4.5" fill="#0e2147"/>
+      <rect x="98" y="70" width="104" height="9" rx="4.5" fill="#c7d2e8"/>
+      <rect x="98" y="90" width="84" height="9" rx="4.5" fill="#0e2147"/>
+      <rect x="98" y="110" width="104" height="9" rx="4.5" fill="#c7d2e8"/>
+      <rect x="98" y="130" width="64" height="9" rx="4.5" fill="#0e2147"/>
+      <rect x="98" y="150" width="104" height="9" rx="4.5" fill="#c7d2e8"/>
+      <g transform="translate(196 104)">
+        <path d="M34 0 L66 12 V40 C66 60 52 74 34 82 C16 74 2 60 2 40 V12 Z" fill="#13a89a" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
+        <rect x="21" y="34" width="26" height="22" rx="5" fill="#fff"/>
+        <path d="M26 34 V28 a8 8 0 0 1 16 0 V34" stroke="#fff" stroke-width="4" fill="none"/>
+      </g>
+    </svg>`
   }
-  return a;
-}
+];
+/* ===================================================== */
 
-function render(){
-  main.innerHTML = "";
-  GROUPS.forEach(g=>{
-    const s = el("section"); s.appendChild(el("h2","",esc(g.name)));
-    g.tools.forEach(t=>s.appendChild(toolRow(t)));
-    main.appendChild(s);
-  });
-
-  const custom = loadCustom();
-  const s = el("section"); s.appendChild(el("h2","","My other links"));
-  custom.forEach((t,i)=>s.appendChild(toolRow(t,i)));
-  const form = el("div","add");
-  form.innerHTML = `<input id="an" placeholder="Name" aria-label="Name"><input id="au" placeholder="Link (https://…)" aria-label="Link"><button id="ab">Add</button>`;
-  s.appendChild(form);
-  main.appendChild(s);
-  form.querySelector("#ab").onclick = ()=>{
-    const n = form.querySelector("#an").value.trim();
-    let u = form.querySelector("#au").value.trim();
-    if(!n||!u) return;
-    if(!/^https?:\/\//i.test(u) && /\./.test(u) && !/\s/.test(u) && !/\.(html|xlsx|pdf)$/i.test(u)) u = "https://"+u;
-    const c = loadCustom(); c.push({icon:"🔗",name:n,desc:u,url:u}); saveCustom(c); render();
-  };
-
-  const empty = el("div","empty","No tool matches your search."); empty.id="empty"; main.appendChild(empty);
-  filter();
-}
-
-function filter(){
-  const v = q.value.trim().toLowerCase();
-  let shown = 0;
-  main.querySelectorAll("section").forEach(sec=>{
-    let any = false;
-    sec.querySelectorAll(".tool").forEach(a=>{
-      const ok = !v || a.dataset.search.includes(v);
-      a.style.display = ok ? "" : "none";
-      if(ok) any = true;
-    });
-    const isCustom = sec.querySelector(".add");
-    sec.style.display = (any || (isCustom && !v)) ? "" : "none";
-    if(any) shown++;
-  });
-  const e = document.getElementById("empty");
-  if(e) e.style.display = (v && !shown) ? "block" : "none";
-}
-q.addEventListener("input", filter);
-render();
+const arrow = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>`;
+const grid = document.getElementById("grid");
+TOOLS.forEach(t=>{
+  const a = document.createElement("a");
+  a.className = "card"; a.href = t.url; a.target = "_blank"; a.rel = "noopener";
+  a.innerHTML = `<div class="art ${t.art}">${t.svg}</div>
+    <div class="body"><h2>${t.name}</h2><p>${t.desc}</p><span class="open">Open ${arrow}</span></div>`;
+  grid.appendChild(a);
+});
 </script>
 </body>
 </html>
