@@ -4,127 +4,88 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>VED Investment – Tools</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
-:root{
-  --navy:#0e2147; --navy2:#1b3a7a; --ink:#101c36; --muted:#55657f;
-  --teal:#13a89a; --sky:#3b82f6; --bg:#e9eff8;
-}
+:root{--navy:#0e2147;--ink:#101c36;--muted:#5b6b85;--line:#d9e1ee;--bg:#f5f7fb;--accent:#13a89a}
 *{box-sizing:border-box}
 html,body{margin:0;min-height:100%}
-body{
-  font-family:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
-  color:var(--ink); line-height:1.5;
-  background:
-    radial-gradient(900px 500px at 85% -10%, rgba(59,130,246,.35), transparent 60%),
-    radial-gradient(700px 480px at 0% 0%, rgba(19,168,154,.28), transparent 60%),
-    linear-gradient(180deg,#0b1a3a 0,#10285a 420px,var(--bg) 420px);
-  background-repeat:no-repeat;
-}
-.page{max-width:1140px;margin:0 auto;padding:56px 22px 48px}
-.brand{color:#fff;text-align:center;padding-bottom:42px}
-.brand .mark{
-  display:inline-grid;place-items:center;width:64px;height:64px;border-radius:18px;
-  background:linear-gradient(135deg,#1fc7b6,#3b82f6);
-  box-shadow:0 10px 30px rgba(19,168,154,.45), inset 0 1px 0 rgba(255,255,255,.4);
-  font-weight:800;font-size:22px;letter-spacing:.02em;margin-bottom:18px;
-}
-.brand h1{margin:0;font-size:clamp(30px,6vw,46px);font-weight:800;letter-spacing:-.02em}
-.brand p{margin:8px 0 0;color:#b7c8ea;font-weight:700;font-size:17px}
+body{font-family:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.5}
 
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+header{background:var(--navy);color:#fff;text-align:center;padding:44px 20px 48px}
+header svg{width:92px;height:92px;display:block;margin:0 auto 14px}
+header h1{margin:0;font-size:clamp(26px,5vw,36px);font-weight:800;letter-spacing:-.01em}
+header p{margin:6px 0 0;color:#aebddb;font-weight:700;font-size:16px}
+
+main{max-width:880px;margin:0 auto;padding:44px 22px 24px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .card{
-  display:flex;flex-direction:row;text-decoration:none;color:inherit;background:#fff;
-  border-radius:24px;overflow:hidden;
-  box-shadow:0 2px 4px rgba(14,33,71,.06),0 24px 48px -12px rgba(14,33,71,.35);
-  transition:transform .25s ease, box-shadow .25s ease;
+  display:flex;align-items:flex-start;gap:18px;padding:26px 26px;
+  background:#fff;border:1px solid var(--line);border-radius:12px;
+  text-decoration:none;color:inherit;
+  transition:border-color .2s ease, box-shadow .2s ease;
 }
-.card:hover,.card:focus-visible{transform:translateY(-5px);box-shadow:0 2px 4px rgba(14,33,71,.06),0 36px 64px -14px rgba(14,33,71,.5)}
-.card:focus-visible{outline:4px solid var(--teal);outline-offset:3px}
-.art{flex:0 0 40%;min-height:250px;display:grid;place-items:center;position:relative;overflow:hidden}
-.art.a1{background:linear-gradient(135deg,#0d2a63 0%,#1b56c4 55%,#17b5a6 120%)}
-.art.a2{background:linear-gradient(135deg,#14224a 0%,#34358f 55%,#2f7be0 120%)}
-.art::after{content:"";position:absolute;inset:0;background:radial-gradient(300px 160px at 80% 0%,rgba(255,255,255,.22),transparent 70%)}
-.art svg{width:88%;max-width:240px;height:auto;position:relative;z-index:1;filter:drop-shadow(0 12px 18px rgba(0,0,0,.28))}
-.body{padding:28px 26px;display:flex;flex-direction:column;justify-content:center;flex:1}
-.body h2{margin:0 0 10px;font-size:23px;font-weight:800;letter-spacing:-.01em}
-.body p{margin:0 0 22px;color:var(--muted);font-weight:500;font-size:15px}
-.open{
-  margin-top:4px;align-self:flex-start;display:inline-flex;align-items:center;gap:10px;
-  background:var(--navy);color:#fff;font-weight:800;font-size:15px;padding:12px 22px;border-radius:999px;
-  transition:background .2s ease, gap .2s ease;
-}
-.open svg{width:18px;height:18px}
-.card:hover .open{background:linear-gradient(90deg,#13a89a,#2f7be0);gap:16px}
-footer{text-align:center;margin-top:46px;color:var(--navy2);font-weight:800;font-size:15px}
-footer span{display:block;color:var(--muted);font-weight:700;font-size:13px;margin-top:2px}
-@media(max-width:860px){
-  .grid{grid-template-columns:1fr}
-}
-@media(max-width:560px){
-  .page{padding-top:40px}
-  .card{flex-direction:column}
-  .art{flex:none;min-height:0;height:190px}
-  .body{padding:24px 24px 26px}
-  .body h2{font-size:24px}
-}
-@media(prefers-reduced-motion:reduce){.card,.open{transition:none}.card:hover{transform:none}}
+.card:hover,.card:focus-visible{border-color:var(--navy);box-shadow:0 8px 24px -12px rgba(14,33,71,.35)}
+.card:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.ico{flex:none;width:44px;height:44px;color:var(--navy)}
+.ico svg{width:100%;height:100%;display:block}
+.txt{flex:1;min-width:0}
+.txt h2{margin:0 0 4px;font-size:19px;font-weight:800}
+.txt p{margin:0 0 16px;color:var(--muted);font-weight:500;font-size:15px}
+.open{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:15px;color:var(--navy);transition:gap .2s ease,color .2s ease}
+.open svg{width:16px;height:16px}
+.card:hover .open{gap:13px;color:var(--accent)}
+
+footer{text-align:center;padding:26px 20px 44px;color:var(--muted);font-weight:700;font-size:13px}
+@media(max-width:720px){.grid{grid-template-columns:1fr}main{padding-top:30px}}
+@media(prefers-reduced-motion:reduce){.card,.open{transition:none}}
 </style>
 </head>
 <body>
-<div class="page">
-  <div class="brand">
-    <div class="mark">VED</div>
-    <h1>VED Investment</h1>
-    <p>Sahi Guidance, Sahi Balance</p>
-  </div>
+<header>
+  <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Shree Ganesh">
+    <g fill="#0e2147" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round">
+      <ellipse cx="50" cy="104" rx="30" ry="42"/>
+      <ellipse cx="150" cy="104" rx="30" ry="42"/>
+      <ellipse cx="100" cy="100" rx="38" ry="42"/>
+      <path d="M70 64 Q100 54 130 64 L118 32 Q100 4 82 32 Z"/>
+      <path d="M76 50 Q100 42 124 50" stroke-width="3.5" fill="none"/>
+      <path d="M100 68 V78" stroke-width="4"/>
+      <path d="M100 98 C100 124 104 142 96 154 C90 163 78 160 80 151" fill="none" stroke-width="9"/>
+      <path d="M116 128 C124 134 126 144 122 154" fill="none" stroke-width="4"/>
+    </g>
+    <circle cx="86" cy="94" r="4" fill="#fff"/>
+    <circle cx="114" cy="94" r="4" fill="#fff"/>
+  </svg>
+  <h1>VED Investment</h1>
+  <p>Sahi Guidance, Sahi Balance</p>
+</header>
 
+<main>
   <div class="grid" id="grid"></div>
+</main>
 
-  <footer>VED Investment • Mutual Fund Distribution</footer>
-</div>
+<footer>VED Investment • Mutual Fund Distribution</footer>
 
 <script>
 /* ===== EDIT HERE to change a link or add a tool ===== */
 const TOOLS = [
   {
     name: "MF Research Tool",
-    desc: "NAV, SIP calculator, fund comparison, holdings, TER and client reports.",
+    desc: "NAV, SIP calculator, comparison, holdings, TER and client reports.",
     url: "https://storage4myfile-max.github.io/mf-research-tool/",
-    art: "a1",
-    svg: `<svg viewBox="0 0 300 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="10" y="10" width="280" height="160" rx="18" fill="#fff" fill-opacity=".14" stroke="#fff" stroke-opacity=".45" stroke-width="2"/>
-      <rect x="40" y="104" width="30" height="46" rx="7" fill="#fff" fill-opacity=".55"/>
-      <rect x="84" y="86" width="30" height="64" rx="7" fill="#fff" fill-opacity=".7"/>
-      <rect x="128" y="94" width="30" height="56" rx="7" fill="#fff" fill-opacity=".6"/>
-      <rect x="172" y="64" width="30" height="86" rx="7" fill="#fff" fill-opacity=".85"/>
-      <rect x="216" y="40" width="30" height="110" rx="7" fill="#fff"/>
-      <path d="M44 88 L100 66 L143 74 L187 46 L231 24" stroke="#5eead4" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-      <circle cx="231" cy="24" r="9" fill="#5eead4" stroke="#fff" stroke-width="3"/>
-    </svg>`
+    icon: `<svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 6v32h32"/><path d="M13 30V22M21 30V14M29 30V19M36 30V10" /><path d="M13 17l8-7 8 5 7-8" stroke-width="2"/></svg>`
   },
   {
     name: "CAS Redaction Engine",
-    desc: "Hide personal details in CAS statements before sharing. Single or batch.",
+    desc: "Hide personal details in CAS statements before sharing.",
     url: "https://storage4myfile-max.github.io/cas-Redactor/",
-    art: "a2",
-    svg: `<svg viewBox="0 0 300 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="78" y="8" width="144" height="168" rx="14" fill="#fff"/>
-      <rect x="98" y="28" width="60" height="9" rx="4.5" fill="#c7d2e8"/>
-      <rect x="98" y="50" width="104" height="9" rx="4.5" fill="#0e2147"/>
-      <rect x="98" y="70" width="104" height="9" rx="4.5" fill="#c7d2e8"/>
-      <rect x="98" y="90" width="84" height="9" rx="4.5" fill="#0e2147"/>
-      <rect x="98" y="110" width="104" height="9" rx="4.5" fill="#c7d2e8"/>
-      <rect x="98" y="130" width="64" height="9" rx="4.5" fill="#0e2147"/>
-      <rect x="98" y="150" width="104" height="9" rx="4.5" fill="#c7d2e8"/>
-      <g transform="translate(196 104)">
-        <path d="M34 0 L66 12 V40 C66 60 52 74 34 82 C16 74 2 60 2 40 V12 Z" fill="#13a89a" stroke="#fff" stroke-width="4" stroke-linejoin="round"/>
-        <rect x="21" y="34" width="26" height="22" rx="5" fill="#fff"/>
-        <path d="M26 34 V28 a8 8 0 0 1 16 0 V34" stroke="#fff" stroke-width="4" fill="none"/>
-      </g>
-    </svg>`
+    icon: `<svg viewBox="0 0 44 44" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10 5h17l8 8v26H10z"/><path d="M27 5v8h8"/><path d="M16 21h12" /><rect x="15" y="28" width="14" height="4" rx="1" fill="currentColor"/></svg>`
   }
 ];
 /* ===================================================== */
@@ -134,8 +95,8 @@ const grid = document.getElementById("grid");
 TOOLS.forEach(t=>{
   const a = document.createElement("a");
   a.className = "card"; a.href = t.url; a.target = "_blank"; a.rel = "noopener";
-  a.innerHTML = `<div class="art ${t.art}">${t.svg}</div>
-    <div class="body"><h2>${t.name}</h2><p>${t.desc}</p><span class="open">Open ${arrow}</span></div>`;
+  a.innerHTML = `<div class="ico">${t.icon}</div>
+    <div class="txt"><h2>${t.name}</h2><p>${t.desc}</p><span class="open">Open ${arrow}</span></div>`;
   grid.appendChild(a);
 });
 </script>
